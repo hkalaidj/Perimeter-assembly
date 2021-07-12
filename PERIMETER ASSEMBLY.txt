@@ -1,0 +1,48 @@
+
+H.KALAIDJIAN ASSEMBLY PERIMETER CALCULATION 
+
+-------------------------------------------------------------------------------
+      Object
+Addr  code   Symbol   Mnemon  Operand     Comment
+-------------------------------------------------------------------------------
+0000  040012          BR      Main        
+0003  0000   number:  .BLOCK  2           
+0005  0000   number2: .BLOCK  2           
+0007  0000   sum:     .WORD   0           
+
+0009  773D00 message1:.ASCII  "w=\x00"    
+000C  6C3D00 message2:.ASCII  "l=\x00"    
+000F  503D00 message3:.ASCII  "P=\x00"    
+0012  C10007 Main:    LDA     sum,d       
+
+0015  310003          DECI    number,d    ;GET FIRST NUMBER
+0018  710003          ADDA    number,d    ;ADD DECIMAL VALUE OF WIDTH
+001B  710003          ADDA    number,d    ;ADD DECIMAL VALUE OF WIDTH 2nd TIME
+001E  310005          DECI    number2,d   ;GET SECOND NUMBER
+0021  710005          ADDA    number2,d   ;ADD DECIMAL VALuE OF LENGTH L
+0024  710005          ADDA    number2,d   ;ADD DECIMAL VALUE OF L 2nd TIME
+0027  410009          STRO    message1,d  ;PRINT w=
+002A  390003          DECO    number,d    
+002D  50000A          CHARO   '\n',i      
+
+0030  41000C          STRO    message2,d  ;PRINT l=
+0033  390005          DECO    number2,d   
+0036  50000A          CHARO   '\n',i      
+0039  E10007          STA     sum,d       
+003C  41000F          STRO    message3,d  ;PRINT P=
+003F  390007          DECO    sum,d       ;OUTPUT PERIMETER
+0042  00              STOP                
+0043                  .END                  
+-------------------------------------------------------------------------------
+
+
+Symbol table
+--------------------------------------
+Symbol    Value        Symbol    Value
+--------------------------------------
+Main      0012         message1  0009
+message2  000C         message3  000F
+number    0003         number2   0005
+sum       0007         
+--------------------------------------
+
